@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.css" />
+    <style>
+        #map {
+            height: 400px;
+        }
+    </style>
+</head>
+<body>
+<div id="map"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"></script>
+<script>
+    $(document).ready(function() {
+        var map = L.map('map').setView([23.7903210, 90.4076959], 15); // Set the initial coordinates and zoom level
+        var circle = L.circle([23.7903210, 90.4076959], {
+            color: 'red',
+            fillColor: '#f03',
+            fillOpacity: 0.5,
+            radius: 500
+        }).addTo(map);
+        // Add custom map style
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: 'Developed By  <a href="https://sopu.live/">Saif</a>',
+            maxZoom: 18,
+        }).addTo(map);
+
+        L.marker([23.7903210, 90.4076959]).addTo(map) // Add a marker at the specified location
+            .bindPopup('Banani, Dhaka Bangladesh') // Add a popup with some text
+            .openPopup();
+    });
+</script>
+</body>
+</html>
